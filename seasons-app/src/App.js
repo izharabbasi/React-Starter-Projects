@@ -4,21 +4,23 @@ import './App.css';
 
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
+  state = { lat: null, error: ''}
 
-    this.state = { lat: null }
+  componentDidMount(){
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({lat: position.coords.latitude})
+      },
+      (err) => {
+        this.setState({error: err.message})
+      }
+    )
   }
 
   render(){
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => console.log(position),
-      (err) => console.log(err)
-    )
-
     return (
       <div className="App">
-        <SeasonDisplay />
+        <SeasonDisplay latitude={this.state.lat} error={this.state.error} />
       </div>
     );
 
