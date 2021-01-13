@@ -1,5 +1,6 @@
 import React from "react";
 import "./seasonDisplay.css";
+import Spinner from "./Spinner";
 
 const seasonConfig = {
   Summer: {
@@ -36,7 +37,7 @@ function SeasonDisplay({ latitude, error }) {
       </div>
     );
   }
-  return <h1>Loading...</h1>;
+  return <Spinner message='Please Accept Location Request...'/>;
 }
 
 export default SeasonDisplay;
