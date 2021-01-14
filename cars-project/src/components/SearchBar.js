@@ -6,8 +6,8 @@ class SearchBar extends React.Component {
   handleClick = (e) => {
     e.preventDefault();
 
-    this.props.onSubmit(this.state.term)
-  }
+    this.props.onSubmit(this.state.term);
+  };
 
   render() {
     return (
